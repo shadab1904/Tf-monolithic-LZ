@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      TF_VAR_vm_admin_password: ${{ secrets.VM_ADMIN_PASSWORD }}
+      TF_VAR_vm_admin_password: Shysha@19042025
 
     steps:
 
