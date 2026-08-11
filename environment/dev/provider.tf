@@ -9,10 +9,10 @@ terraform {
   }
 
   backend "azurerm" {
-    resource_group_name  = "msc_airtelrg"
-    storage_account_name = "switchpahariya1"
-    container_name       = "pahariya"
-    key                  = "vmfe.terraform.tfstate"
+    resource_group_name  = "msc_airtelrg1"
+    storage_account_name = "switchpahariya19"
+    container_name       = "pahariyamsc"
+    key                  = "vm.terraform.tfstate"
 
   }
 }
