@@ -17,18 +17,13 @@ module "subnet" {
 
 }
 
-module "nsg" {
-  source     = "../../Module/Azurerm_nsg"
-  nsg_airtel = var.nsgs
-  depends_on = [module.nic]
-}
-
 module "pip" {
   source     = "../../Module/Azurerm_pip"
   pip_airtel = var.pip
   depends_on = [module.resource_group]
 
 }
+
 
 module "nic" {
   source     = "../../Module/Azurerm_nic"
@@ -37,15 +32,25 @@ module "nic" {
 
 }
 
-module "vm" {
-  source     = "../../Module/Azurerm_vm"
-  vm_airtel  = var.vms
-  depends_on = [module.nic, module.keyvault]
-
+module "nsg" {
+  source     = "../../Module/Azurerm_nsg"
+  nsg_airtel = var.nsgs
+  depends_on = [module.nic]
 }
+
 
 module "keyvault" {
   source          = "../../Module/Azurerm_keyvault"
   keyvault_airtel = var.keyvault
+  vm_admin_password  = var.vm_admin_password
   depends_on      = [module.resource_group]
+
 }
+
+module "vm" {
+  source     = "../../Module/Azurerm_vm"
+  vm_airtel  = var.vms
+  depends_on = [module.nic, module.keyvault, module.nsg]
+
+}
+

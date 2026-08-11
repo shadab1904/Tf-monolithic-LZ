@@ -12,6 +12,9 @@ jobs:
   terraform:
     runs-on: ubuntu-latest
 
+    env:
+      TF_VAR_vm_admin_password: ${{ secrets.VM_ADMIN_PASSWORD }}
+
     steps:
 
       - name: Checkout
@@ -53,6 +56,4 @@ jobs:
         working-directory: ./environment/dev
         run: terraform apply -auto-approve
 
-      - name: Terraform Apply
-        working-directory: ./dev
-        run: terraform apply -auto-approve
+
