@@ -1,3 +1,3 @@
 variable "nic_airtel" {
-    type = map(any)
+  type = map(any)
 }

@@ -1,3 +1,3 @@
 variable "vnet_airtel" {
-    type = map(any)
+  type = map(any)
 }

@@ -1,3 +1,3 @@
 variable "subnet_airtel" {
-    type = map(any)
+  type = map(any)
 }

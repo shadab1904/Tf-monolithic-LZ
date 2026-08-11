@@ -1,3 +1,3 @@
 variable "pip_airtel" {
-    type = map(any)
+  type = map(any)
 }

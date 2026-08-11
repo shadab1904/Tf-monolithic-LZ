@@ -1,23 +1,23 @@
 data "azurerm_network_interface" "nic_id" {
-    for_each = var.vm_airtel
+  for_each            = var.vm_airtel
   name                = each.value.nic_name
   resource_group_name = each.value.rg_name
 }
 
 data "azurerm_key_vault" "keyvault_id" {
-  for_each = var.vm_airtel
+  for_each            = var.vm_airtel
   name                = each.value.keyvault_name
   resource_group_name = each.value.rg_name
 }
 
 data "azurerm_key_vault_secret" "password" {
-  for_each = var.vm_airtel
+  for_each     = var.vm_airtel
   name         = "vm-admin-password"
   key_vault_id = data.azurerm_key_vault.keyvault_id[each.key].id
 }
 
 resource "azurerm_virtual_machine" "vm_ericsson_airtel" {
-    for_each = var.vm_airtel
+  for_each              = var.vm_airtel
   name                  = each.value.vm_name
   location              = each.value.location
   resource_group_name   = each.value.rg_name
