@@ -1,0 +1,47 @@
+name: Terraform Azure Pipeline
+
+on:
+  push:
+    branches:
+      - main  
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          client-id: 7b4464d6-33e7-4495-82f6-dd5441c87c78
+          client-secret: ${{ secrets.AZURE_CLIENT_SECRET }}
+          tenant-id: 1d6a29b8-43b7-4c79-9bdf-c48c5d9b44dd
+          subscription-id: 111116e2-8386-4181-b026-d821502e31cc
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init
+        working-directory: ./dev
+        run: terraform init
+
+      - name: Terraform Validate
+        working-directory: ./dev
+        run: terraform validate
+
+      - name: Terraform Plan
+        working-directory: ./dev
+        run: terraform plan
+
+      - name: Terraform Apply
+        working-directory: ./dev
+        run: terraform apply -auto-approve
