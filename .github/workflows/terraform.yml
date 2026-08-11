@@ -38,16 +38,20 @@ jobs:
         run: terraform fmt -check -recursive  
 
       - name: Terraform Init
-        working-directory: ./dev
+        working-directory: ./environment/dev
         run: terraform init
 
       - name: Terraform Validate
-        working-directory: ./dev
+        working-directory: ./environment/dev
         run: terraform validate
 
       - name: Terraform Plan
-        working-directory: ./dev
+        working-directory: ./environment/dev
         run: terraform plan
+        
+      - name: Terraform Apply
+        working-directory: ./environment/dev
+        run: terraform apply -auto-approve
 
       - name: Terraform Apply
         working-directory: ./dev
