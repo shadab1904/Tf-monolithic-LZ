@@ -23,7 +23,7 @@ jobs:
         uses: azure/login@v2
         with:
           client-id: 7b4464d6-33e7-4495-82f6-dd5441c87c78
-          client-secret: ${{ secrets.AZURE_CLIENT_SECRET }}
+          client-secret: zOz8Q~w8RR5kt4tfY4kwSkPNyGzXc0nFai2DeciG
           tenant-id: 1d6a29b8-43b7-4c79-9bdf-c48c5d9b44dd
           subscription-id: 111116e2-8386-4181-b026-d821502e31cc
 
