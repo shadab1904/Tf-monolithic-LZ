@@ -10,7 +10,7 @@ resource "azurerm_key_vault" "keyvault_ericsson_airtel" {
   purge_protection_enabled   = each.value.keyvault_ppe
   sku_name                   = each.value.keyvault_sku
 
-  enable_rbac_authorization = false
+  rbac_authorization_enabled = false
 
   access_policy {
     tenant_id = data.azurerm_client_config.current.tenant_id
