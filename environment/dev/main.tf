@@ -40,10 +40,10 @@ module "nsg" {
 
 
 module "keyvault" {
-  source          = "../../Module/Azurerm_keyvault"
-  keyvault_airtel = var.keyvault
-  vm_admin_password  = var.vm_admin_password
-  depends_on      = [module.resource_group]
+  source            = "../../Module/Azurerm_keyvault"
+  keyvault_airtel   = var.keyvault
+  vm_admin_password = var.vm_admin_password
+  depends_on        = [module.resource_group]
 
 }
 
