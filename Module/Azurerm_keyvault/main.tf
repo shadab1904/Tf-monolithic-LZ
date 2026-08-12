@@ -34,6 +34,8 @@ resource "azurerm_key_vault_secret" "vm_admin_password" {
   name         = "vm-admin-password"
   value        = var.vm_admin_password
   key_vault_id = azurerm_key_vault.keyvault_ericsson_airtel[each.key].id
+  depends_on = [azurerm_key_vault.keyvault_ericsson_airtel]
+
 }
 
 

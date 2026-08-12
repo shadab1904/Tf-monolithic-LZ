@@ -8,6 +8,7 @@ data "azurerm_key_vault" "keyvault_id" {
   for_each            = var.vm_airtel
   name                = each.value.keyvault_name
   resource_group_name = each.value.rg_name
+  
 }
 
 data "azurerm_key_vault_secret" "password" {
